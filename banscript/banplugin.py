@@ -6,11 +6,16 @@ def returnState(ip):
             e = x.split("/")
             if e[0] == ip:
                 return True
-currentAccess =True
-if returnState(argv[1]) == True:
-    currentAccess = False
 
-if currentAccess == True:
-    return True
-else:
-    return False
+def Ban(ip):
+    with open("banlist.txt", "a") as f:
+        f.write(ip)
+        f.close()
+
+if argv[1] == "!ban":
+    Ban(argv[2])
+elif argv[2] == "check":
+    if returnState(argv[2]) == True:
+        return True
+    else:
+        return False
